@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Request - FindMyFit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="brand">
+                <div class="brand-logo">
+                    <img src="Pics/Screenshot 2025-05-05 232603.png" alt="FindMyFit Logo">
+                </div>
+                <span class="brand-name">FindMyFit</span>
+            </a>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="submit-request.html">Submit Request</a>
+                <a href="designers.html">Designers</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- Hero/Header Section -->
+            <section class="hero-section" style="background: linear-gradient(90deg, #f7f7f9 60%, #e9f1ef 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(44,62,80,0.07); padding: 2.5rem 2rem 2rem 2rem; margin-bottom: 2.5rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📝</div>
+                <h1 style="font-size: 2.2rem; font-weight: 900; color: var(--primary); margin-bottom: 0.5rem;">Submit Your Outfit Requirements</h1>
+                <p style="font-size: 1.15rem; color: var(--muted);">Tell us what you're looking for and we'll match you with the perfect designer!</p>
+            </section>
+
+            <div style="display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;">
+                <!-- Form Card -->
+                <div class="card" style="flex: 1 1 350px; max-width: 500px; min-width: 320px;">
+                    <form id="request-form">
+                        <div class="form-group">
+                            <label for="requirements">Describe your outfit requirements</label>
+                            <textarea id="requirements" rows="6" required 
+                                placeholder="Please describe what you're looking for, including style preferences, occasion, and any specific requirements..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="moodboard">Upload mood-board image (optional)</label>
+                            <input type="file" id="moodboard" accept="image/*">
+                            <p class="help-text" style="color: var(--muted); font-size: 0.95rem;">Upload images that inspire your desired style</p>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; margin-top: 1rem;">Submit Request</button>
+                    </form>
+                </div>
+                <!-- Sidebar with Tips/Examples -->
+                <aside style="flex: 1 1 250px; max-width: 320px; min-width: 220px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 1.5rem; margin-top: 1rem;">
+                    <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 0.7rem;">Tips for a Great Request</h3>
+                    <ul style="color: var(--muted); font-size: 0.98rem; margin-bottom: 1rem; padding-left: 1.2rem;">
+                        <li>Mention the occasion (e.g., wedding, party, business).</li>
+                        <li>Describe your style (e.g., modern, classic, boho).</li>
+                        <li>Include preferred colors or fabrics.</li>
+                        <li>Share your budget range (optional).</li>
+                    </ul>
+                    <h4 style="color: var(--primary); font-size: 1rem; margin-bottom: 0.5rem;">Example:</h4>
+                    <div style="background: #f7f7fa; border-radius: 8px; padding: 0.7rem 1rem; color: var(--text); font-size: 0.97rem;">
+                        "I need a modern, pastel-colored dress for a summer wedding. I love flowy fabrics and minimal embellishments."
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html> 

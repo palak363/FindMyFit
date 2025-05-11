@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designers - FindMyFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .designer-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .designer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.12);
+            border-color: var(--primary);
+        }
+
+        .designer-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .designer-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.08);
+        }
+
+        .designer-info {
+            flex: 1;
+        }
+
+        .designer-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .designer-specialty {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .designer-rating {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .designer-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .designer-actions .btn {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--accent);
+            transition: transform 0.2s, color 0.2s;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.favorited {
+            color: #E74C3C;
+            animation: heartBeat 0.3s ease-in-out;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .badge-success {
+            background: rgba(75, 106, 106, 0.1);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="brand">
+                <div class="brand-logo">
+                    <img src="Pics/Screenshot 2025-05-05 232603.png" alt="FindMyFit Logo">
+                </div>
+                <span class="brand-name">FindMyFit</span>
+            </a>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="submit-request.html">Submit Request</a>
+                <a href="designers.html">Designers</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="page-header">
+                <h1>Available Designers</h1>
+                <p>Browse through our talented designers who can match your style</p>
+            </div>
+            
+            <div class="card-grid" id="designers-grid">
+                <!-- Designer cards will be populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const matchingDesigners = getMatchingDesigners();
+            const grid = document.getElementById('designers-grid');
+            
+            matchingDesigners.forEach(designer => {
+                const card = document.createElement('div');
+                card.className = 'designer-card';
+                card.innerHTML = `
+                    <div class="designer-header">
+                        <img src="${designer.thumbnail}" alt="${designer.name}" class="designer-image">
+                        <div class="designer-info">
+                            <h3 class="designer-name">${designer.name}</h3>
+                            <p class="designer-specialty">${designer.specialty === 'Wedding Attire Specialist' ? 'Wedding Speciality' : designer.specialty}</p>
+                            <div class="designer-rating">${designer.rating} ★ (${designer.reviews} reviews)</div>
+                        </div>
+                    </div>
+                    <span class="badge badge-success">Available for Matching</span>
+                    <div class="designer-actions">
+                        <a href="chat.html?designerId=${designer.id}" class="btn">Chat</a>
+                        <a href="designer-profile.html?id=${designer.id}" class="btn">View Profile</a>
+                    </div>
+                    <button class="favorite-btn" title="Add to favorites">&#9829;</button>
+                `;
+                grid.appendChild(card);
+                
+                // Add favorite toggle logic
+                setTimeout(() => {
+                    const favBtn = card.querySelector('.favorite-btn');
+                    favBtn.addEventListener('click', function() {
+                        favBtn.classList.toggle('favorited');
+                    });
+                }, 0);
+            });
+        });
+    </script>
+</body>
+</html> 

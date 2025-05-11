@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Profile - FindMyFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .portfolio-gallery {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .portfolio-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #f7f7fa;
+        }
+        .portfolio-image:hover {
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 8px 32px rgba(44,62,80,0.16);
+        }
+        .calendar-placeholder {
+            height: 220px;
+            background: #f7f7fa;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8A8F98;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0 0;
+            border: 2px dashed #E0E3EA;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="brand">
+                <div class="brand-logo">
+                    <img src="Pics/Screenshot 2025-05-05 232603.png" alt="FindMyFit Logo">
+                </div>
+                <span class="brand-name">FindMyFit</span>
+            </a>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="submit-request.html">Submit Request</a>
+                <a href="designers.html">Designers</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <div class="page-header" id="designer-header">
+                <!-- Designer info will be loaded here -->
+            </div>
+            <section class="card" id="portfolio-section">
+                <h2>Portfolio</h2>
+                <div id="portfolio-gallery" class="portfolio-gallery"></div>
+            </section>
+            <section class="card" id="reviews-section">
+                <h2>Reviews</h2>
+                <div id="reviews-list"></div>
+            </section>
+            <section class="card" id="booking-section">
+                <h2>Book a Consultation</h2>
+                <div id="calendar-placeholder" class="calendar-placeholder">Calendar UI Coming Soon</div>
+            </section>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        // Sample static reviews
+        const sampleReviews = [
+            { user: "Emily R.", rating: 5, text: "Sarah was amazing! She designed the perfect wedding dress for me." },
+            { user: "Jessica T.", rating: 4, text: "Great experience, very professional and creative." },
+            { user: "Anna K.", rating: 5, text: "Loved the attention to detail and communication." }
+        ];
+
+        function getDesignerById(id) {
+            return designers.find(d => d.id === parseInt(id));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const designerId = urlParams.get('id');
+            const designer = getDesignerById(designerId);
+            if (!designer) return;
+
+            // Header
+            document.getElementById('designer-header').innerHTML = `
+                <img src="${designer.thumbnail}" alt="${designer.name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                <h1>${designer.name}</h1>
+                <p>${designer.specialty}</p>
+                <div style="font-size: 1.2rem; color: #A67C52; margin-bottom: 0.5rem;">
+                    <span style="font-weight: bold; font-size: 1.3rem;">${designer.rating} ★</span> (${designer.reviews} reviews)
+                </div>
+            `;
+
+            // Portfolio
+            const gallery = document.getElementById('portfolio-gallery');
+            designer.portfolio.forEach(img => {
+                const imgEl = document.createElement('img');
+                imgEl.src = img;
+                imgEl.alt = 'Portfolio image';
+                imgEl.className = 'portfolio-image';
+                gallery.appendChild(imgEl);
+            });
+
+            // Reviews
+            const reviewsList = document.getElementById('reviews-list');
+            sampleReviews.forEach(r => {
+                const review = document.createElement('div');
+                review.style.marginBottom = '1.2rem';
+                review.innerHTML = `
+                    <div style="font-weight: bold; color: var(--primary);">${r.user} <span style="color: #A67C52;">${'★'.repeat(r.rating)}</span></div>
+                    <div style="color: var(--text); margin-top: 0.2rem;">${r.text}</div>
+                `;
+                reviewsList.appendChild(review);
+            });
+        });
+    </script>
+</body>
+</html> 

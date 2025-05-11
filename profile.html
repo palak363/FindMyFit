@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - FindMyFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .profile-section {
+            margin-bottom: 2.5rem;
+        }
+        .profile-card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .profile-card {
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            min-width: 260px;
+            flex: 1 1 260px;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .profile-card:hover {
+            box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+            border-color: var(--primary);
+        }
+        .profile-badge {
+            display: inline-block;
+            background: #E6F4EA;
+            color: #2E7D32;
+            border-radius: 20px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .profile-message {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+        }
+        .profile-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+        }
+        .profile-flex {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="brand">
+                <div class="brand-logo">
+                    <img src="Pics/Screenshot 2025-05-05 232603.png" alt="FindMyFit Logo">
+                </div>
+                <span class="brand-name">FindMyFit</span>
+            </a>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="submit-request.html">Submit Request</a>
+                <a href="designers.html">Designers</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="page-header">
+                <h1>Your Profile</h1>
+                <p>Manage your account and view your activity</p>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('requests')">Requests</div>
+                <div class="tab" onclick="showTab('favorites')">Favorites</div>
+                <div class="tab" onclick="showTab('messages')">Messages</div>
+                <div class="tab" onclick="showTab('settings')">Settings</div>
+            </div>
+            
+            <div id="requests" class="tab-content active profile-section">
+                <div class="card">
+                    <h2>Your Requests</h2>
+                    <div class="profile-card-list">
+                        <div class="profile-card">
+                            <div class="profile-flex"><span class="profile-badge">Pending</span></div>
+                            <h4>Summer Wedding Outfit</h4>
+                            <div class="profile-message">"Looking for a pastel-themed summer wedding dress with floral accents."</div>
+                            <div style="color: #8A8F98; font-size: 0.95rem; margin-top: 0.5rem;">Submitted: 2024-03-15</div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-flex"><span class="profile-badge" style="background:#FFF3E0;color:#A67C52;">Completed</span></div>
+                            <h4>Business Casual Wardrobe</h4>
+                            <div class="profile-message">"Need a set of business casual outfits for a new job."</div>
+                            <div style="color: #8A8F98; font-size: 0.95rem; margin-top: 0.5rem;">Submitted: 2024-03-10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="favorites" class="tab-content profile-section">
+                <div class="card">
+                    <h2>Favorite Designers</h2>
+                    <div class="profile-card-list">
+                        <div class="profile-card profile-flex">
+                            <img src="Pics/3135715.png" alt="Sarah Smith" class="profile-avatar">
+                            <div>
+                                <h4 style="margin:0;">Sarah Smith <span class="profile-badge">4.8 ★</span></h4>
+                                <div style="color: #8A8F98; font-size: 0.95rem;">Wedding Attire Specialist</div>
+                            </div>
+                        </div>
+                        <div class="profile-card profile-flex">
+                            <img src="Pics/3135715.png" alt="Mike Johnson" class="profile-avatar">
+                            <div>
+                                <h4 style="margin:0;">Mike Johnson <span class="profile-badge">4.6 ★</span></h4>
+                                <div style="color: #8A8F98; font-size: 0.95rem;">Business Wear Expert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="messages" class="tab-content profile-section">
+                <div class="card">
+                    <h2>Recent Messages</h2>
+                    <div class="profile-card-list">
+                        <div class="profile-card">
+                            <div class="profile-flex">
+                                <img src="Pics/3135715.png" alt="Sarah Smith" class="profile-avatar">
+                                <div>
+                                    <h4 style="margin:0;">Sarah Smith</h4>
+                                    <div class="profile-message">Sarah: "I have a few pastel designs ready for you!"</div>
+                                    <a href="chat.html?designerId=1" class="btn" style="margin-top:0.7rem;">View Chat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-flex">
+                                <img src="Pics/3135715.png" alt="Mike Johnson" class="profile-avatar">
+                                <div>
+                                    <h4 style="margin:0;">Mike Johnson</h4>
+                                    <div class="profile-message">You: "Thank you for the wardrobe suggestions!"</div>
+                                    <a href="chat.html?designerId=2" class="btn" style="margin-top:0.7rem;">View Chat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="settings" class="tab-content">
+                <div class="card">
+                    <h2>Account Settings</h2>
+                    <form id="settings-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" value="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">New Password</label>
+                            <input type="password" id="password" placeholder="Leave blank to keep current password">
+                        </div>
+                        
+                        <button type="submit" class="btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        const sampleFavorites = [
+            { name: 'Sarah Smith', specialty: 'Wedding Attire Specialist', thumbnail: 'Pics/3135715.png', rating: 4.8 },
+            { name: 'Mike Johnson', specialty: 'Business Wear Expert', thumbnail: 'Pics/3135715.png', rating: 4.6 }
+        ];
+
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to selected tab
+            event.target.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load user's requests
+            const requests = getUserRequests();
+            const requestsList = document.getElementById('requests-list');
+            
+            requests.forEach(request => {
+                const requestDiv = document.createElement('div');
+                requestDiv.className = 'card';
+                let progress = 0;
+                let statusLabel = '';
+                if (request.status === 'pending') { progress = 30; statusLabel = 'Pending'; }
+                else if (request.status === 'in progress') { progress = 65; statusLabel = 'In Progress'; }
+                else { progress = 100; statusLabel = 'Completed'; }
+                requestDiv.innerHTML = `
+                    <h3>${request.title || request.description}</h3>
+                    <p>${request.description}</p>
+                    <div style="margin: 0.5rem 0; background: #eee; border-radius: 6px; height: 12px; width: 100%;">
+                        <div style="width: ${progress}%; height: 100%; background: #4B6A6A; border-radius: 6px;"></div>
+                    </div>
+                    <span class="badge">${statusLabel}</span>
+                `;
+                requestsList.appendChild(requestDiv);
+            });
+            
+            // Load recent messages
+            const messages = getRecentMessages();
+            const messagesList = document.getElementById('messages-list');
+            
+            messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'card';
+                messageDiv.innerHTML = `
+                    <h3>${message.designerName}</h3>
+                    <p>${message.preview}</p>
+                    <a href="chat.html?designerId=${message.designerId}" class="btn">View Chat</a>
+                `;
+                messagesList.appendChild(messageDiv);
+            });
+            
+            // Load favorites
+            const favoritesList = document.getElementById('favorites-list');
+            sampleFavorites.forEach(fav => {
+                const favDiv = document.createElement('div');
+                favDiv.className = 'card';
+                favDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <img src="${fav.thumbnail}" alt="${fav.name}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h4 style="margin: 0;">${fav.name}</h4>
+                            <div style="color: #8A8F98; font-size: 0.95rem;">${fav.specialty}</div>
+                            <div style="color: #A67C52;">${fav.rating} ★</div>
+                        </div>
+                    </div>
+                `;
+                favoritesList.appendChild(favDiv);
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - FindMyFit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="brand">
+                <div class="brand-logo">
+                    <img src="Pics/Screenshot 2025-05-05 232603.png" alt="FindMyFit Logo">
+                </div>
+                <span class="brand-name">FindMyFit</span>
+            </a>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="submit-request.html">Submit Request</a>
+                <a href="designers.html">Designers</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="page-header">
+                <h1>Chat with Designer</h1>
+                <p>Discuss your requirements and get personalized recommendations</p>
+            </div>
+            
+            <div class="chat-window">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="Type your message...">
+                    <button class="btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const designerId = urlParams.get('designerId');
+            const designer = getDesignerById(designerId);
+            
+            if (designer) {
+                document.querySelector('.page-header h1').textContent = `Chat with ${designer.name}`;
+                loadChatHistory(designerId);
+            }
+        });
+
+        function loadChatHistory(designerId) {
+            const messages = getChatHistory(designerId);
+            const chatMessages = document.getElementById('chat-messages');
+            
+            messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${message.sender === 'user' ? 'user' : 'designer'}`;
+                messageDiv.textContent = message.text;
+                chatMessages.appendChild(messageDiv);
+            });
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const text = input.value.trim();
+            
+            if (text) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const designerId = urlParams.get('designerId');
+                
+                sendChatMessage(designerId, text);
+                input.value = '';
+                loadChatHistory(designerId);
+            }
+        }
+    </script>
+</body>
+</html> 
