@@ -1,1 +1,3 @@
 # FindMyFit
+
+FindMyFit is a premium digital platform that connects customers with professional fashion designers for custom, high-end outfits tailored to their unique style and event needs. Whether it's a wedding, red carpet, photoshoot, or special occasion, FindMyFit bridges the gap between clients and talented designers by offering a curated matchmaking experience based on style preferences, body type, budget, and timeline. From initial design consultations to final fittings, FindMyFit ensures a seamless journey toward bespoke fashion, empowering both designers and clients to create unforgettable looks.
